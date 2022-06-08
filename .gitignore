@@ -1,0 +1,19 @@
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# logs
+logs
+*.log
+
+# temp
+TODOs.md
+
+# other
+.vite_opt_cache
+.DS_Store
+.vscode
+.idea
+
