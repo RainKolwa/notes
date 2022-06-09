@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,13 +23,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.1.9
           run_install: |
             - args: [--frozen-lockfile]
-      
+
       - name: Install & Build
         run: |
           pnpm docs:build
@@ -37,10 +37,7 @@ jobs:
       - name: Deploy
         uses: dswistowski/surge-sh-action@v1
         with:
-          domain: 'notebook.rainlee.fun'
+          domain: 'rainkolwa.surge.sh'
           project: './docs/.vitepress/dist'
           login: ${{ secrets.surge_login }}
           token: ${{ secrets.surge_token }}
-
-      
-      
